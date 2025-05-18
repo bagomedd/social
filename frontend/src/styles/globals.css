@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @font-face{
-    font-family: 'primary';
-    src: "@/fonts/SpecialGothicExpandedOne-Regular.ttf";
+    font-family: 'Primary';
+    src: local("@/fonts/Primary.ttf");
+}
+:root{
+    /* --font-family-first : 'Franklin Gothic ', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Primary', sans-serif;
+    --default-border-radius: 20px;
 }
 
-    @font-face{
-    font-family:'second';
-    src: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
 
 
@@ -25,12 +26,8 @@ ul{
     padding-inline-end: 0;
 }
 
-:root{
-    --font-family-first : 'Franklin Gothic ', 'Arial Narrow', Arial, sans-serif;
-}
 
 .page{
-
     min-height:100vh;
     background-color: var(--color-gray-100);
     
@@ -52,13 +49,15 @@ ul{
     /* padding: 0 20% 0 20%; */
 }
 .feed{
+    margin-top: 20px;
+    border-radius: var(--default-border-radius);
     /* min-width:960px; */
     min-width:90%;
-    max-width: 90%s;
+    max-width: 90%;
     
-    background-color: white;
+    background-color: var(--color-gray-100);
     /* padding: 5% 5% 0 5%; */
-    min-height:calc(100vh - 60px);
+    min-height:calc(100vh - 80px);
 
 }
 

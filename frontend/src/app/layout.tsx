@@ -1,7 +1,7 @@
 import "@/styles/globals.css"
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-    
+
+export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
 
   return (
     <html lang="en">

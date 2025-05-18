@@ -31,7 +31,11 @@ export function TopUI(){
               <span className={styles['profile-name']}> {profileName} </span>
               <img className={styles['profile-image']} src={profileImage} />
             </Link>
-             : ""}
+             : 
+             <Link href = "/register">
+              <span className={styles['profile-name']}> Register </span>
+            </Link>
+           }
           </li>
         </ul>
       </header>

@@ -3,13 +3,16 @@
 import { useState, useRef } from "react"
 import styles from "@/styles/auth.module.css"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation";
 
 export default function loginPage() {
+  let loginError = useSearchParams().get('error'); 
 
   interface ILoginValues {
     "email" : string,
     "password": string
   }
+  
   function newLoginValues() : ILoginValues {
     return {
     "email" : "",
@@ -51,6 +54,7 @@ export default function loginPage() {
 
 return (
 <div className={styles["page"]}>
+  <p className={styles['error']}> {loginError} </p>
   <form action="/api/login" method="POST" className={styles['auth-form']} ref = {formElementRef}>
   <p className={styles['error']}>{inputErrors.email}</p>
     <input

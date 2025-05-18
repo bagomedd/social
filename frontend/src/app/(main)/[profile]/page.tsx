@@ -1,12 +1,11 @@
 'use server'
 import {getProfile, IProfile} from "@/utils/profile"
 import {Profile} from "@/Components/Profile"
-import styles from "@/styles/profile.module.css";
+
 import { profileFields } from "@/utils/profile";
 // import {getToken} from ""
-import { cookies } from "next/headers";
-import { ProfileInit } from "@/store/ProfileInit";
 
+import { getToken } from "@/utils/cookies";
 export default async function Page({params} : {params : Promise<{profile : string}>}){
   // const jwtToken = getToken();
 
@@ -17,8 +16,7 @@ export default async function Page({params} : {params : Promise<{profile : strin
   
   const {profile} = await params;
   
-  let cookieStore = await cookies()
-  let accessToken = cookieStore.get('token')?.value;
+  let accessToken = await getToken();
   
   const myProfile : IProfile = {
     // [profileFields.initId]  : 0,

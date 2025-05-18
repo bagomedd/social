@@ -2,12 +2,14 @@
 'use client'
 //import React, { ChangeEvent } from 'react'
 import { useState, useRef } from "react"
+import { useSearchParams, useServerInsertedHTML } from "next/navigation"
 import styles from "@/styles/auth.module.css"
 // import {login} from "@/utils/auth"
 import { IRegisterValues, newRegisterValues } from "@/utils/register"
 import Link from "next/link"
 
 export default function registerPage() {
+  const registrationError : string | null = useSearchParams().get('error');
   const registerValuesRef = useRef<IRegisterValues>(newRegisterValues());
   const [inputErrors,setInputErrors] = useState<IRegisterValues>(newRegisterValues());
   const formElementRef = useRef<HTMLFormElement | null>(null);
@@ -57,6 +59,7 @@ export default function registerPage() {
 
 return (
 <div className={styles['page']}>
+  <p className={styles['error']}> {registrationError} </p>
   <form 
   action ="/api/register" 
   method="POST" 
@@ -101,7 +104,6 @@ return (
     className={styles["submit-button"]}
   >
     Submit form
-
   </button>
   <Link href="/login" className={styles["submit-button"]}> Login  </Link>
 

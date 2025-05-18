@@ -7,36 +7,31 @@ import { IProfile, getProfile } from "./profile";
 import { ProfileInit } from "@/store/ProfileInit";
 
 
-export async function login(req: NextRequest, jsonBody : string ){
-    const response = await fetch(AUTH_URL + "/login",{
-        body: jsonBody,
-        method : "POST",
-    })
-    const status = response.status;
-    if (status ==200){
-        let responseText = await response.text();
-        let json : IAccessToken | null = null;
-        let accessToken : string = '';
-        try{
-            json = (JSON.parse(responseText) as IAccessToken);
-            if (json){
-                accessToken = json['access_token'];
-            }
-        }
-        catch{
-            throw('error with convert accessToken');
-        }
 
-        const cookieStore = await cookies();
-        cookieStore.set('token', accessToken);
-        
-        let profile = await getProfile("me",accessToken);
-        ProfileInit(profile);
-
-        return NextResponse.redirect(new URL(DEFAULT_IP + '/', req.url));   
-    }    
-    else{
-        console.log('ERROR WITH LOGIN');
-        return NextResponse.redirect(new URL(DEFAULT_IP + '/login', req.url));   
-    }
+export interface ILoginPost{
+    email: string,
+    password : string,
 }
+export interface IRegisterPost{
+    email: string,
+    username: string,
+    password: string,
+}
+
+
+
+async function login(req: NextRequest, jsonBody : string ){
+    
+}
+
+// export async function checkIsLogged(jwt? : string | undefined){
+//     let redirectPath = '/';
+//     if (!jwt){
+//         return false;
+//     }
+//     else{
+//         // ОБРАБОТКА, НОРМ ЛИ ОТВЕТ
+//         let profile : IProfile = await getProfile("me", jwt);
+//         return true;
+//     }
+// }

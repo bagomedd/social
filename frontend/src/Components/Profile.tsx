@@ -7,8 +7,9 @@ import { redirect } from "next/navigation";
 import { followRequest, unfollowRequest } from "@/utils/profile";
 
 export function Profile({profileInfo, profileName, accessToken} : {profileInfo : IProfile, profileName:string, accessToken : string | undefined }){
+  
     const [profileState, setProfileState] = useState<IProfile>(profileInfo);1
-
+    
     function followButton(){
       followRequest(profileName,accessToken)
       .then((isOk)=>{
@@ -45,14 +46,13 @@ export function Profile({profileInfo, profileName, accessToken} : {profileInfo :
 
     return(
     <>
-        <div className={styles["profile-layout"]}>
+    <div className={styles["profile-layout"]}>
         <div className={styles["background-image-layout"]}>
           <div className={styles["background-image"]}>
             <div className={styles["buttons-on-image"]}>
               
               {!profileState[prF.isOwnProfile] ?
               (
-              // isFollow ?
               profileState[prF.isFollowed] ? 
               <>
               <button onClick={unfollowButton} className={styles["button-add-friend"]}> Unfollow </button> 
@@ -69,27 +69,42 @@ export function Profile({profileInfo, profileName, accessToken} : {profileInfo :
 
 
             </div>
-            <div className={styles["short-info"]}>
-              {/* <p className={styles["name"]}> {profileInfo[prF.username]} </p>   */}
+            <div className={styles["short-info"]}>              
               <p className={styles["name"]}> {profileState[prF.username]} </p>  
-              {/* <p className={styles["surname"]}> {profileInfo[prF.surname]} </p>   */}
             </div>
           </div>  
-        {/* <img className={styles["profile-image"]} src={profileInfo[prF.avatarURL]} alt={profileInfo[prF.avatarURL]} /> */}
-        {/* <img className={styles["profile-image"]} src={profileInfo[prF.avatarURL]} alt="can't resolve" /> */}
         <img className={styles["profile-image"]} src={profileState[prF.avatarURL]} alt="can't resolve" />
         <div className={styles["profile-image-trace"]}> </div>
       </div>
     <div > 
 
+    
+
+      {/* 
       <p>{profileState[prF.description]} </p>
       <p> Birthday: {profileState[prF.birthday]} </p>
-      <p> Followers Count: {profileState[prF.followersCount]} </p>
-      {/* <p>{profileInfo[prF.description]} </p>
-      <p> Birthday: {profileInfo[prF.birthday]} </p>
-      <p> Followers Count: {profileInfo[prF.followersCount]} </p> */}
+      <p> Followers Count: {profileState[prF.followersCount]} </p> */}
+
     </div>
-  </div>
+    <div className={styles["media"]}>
+      <div className={styles["media-layout"]}>
+        <div className={styles["media-buttons-ul"]}>
+          <button className={`${styles["media-button"]} ${styles["selected-btn"]}`}> Фото </button>
+          <button className={`${styles["media-button"]} ${styles["unselected-btn"]}`}> Музыка </button>
+          <button className={`${styles["media-button"]} ${styles["unselected-btn"]}`}> Альбомы </button>
+          <button className={`${styles["media-button"]} ${styles["unselected-btn"]}`}> Клипы </button>
+        </div>
+        <div className={`${styles["media-content"]} ${styles["media-content-photos"]}`}> 
+          <img className={styles["grid-element"]} src="/" alt="1"/> 
+          <img className={styles["grid-element"]} src="/" alt="2"/> 
+          <img className={styles["grid-element"]} src="/" alt="3"/> 
+          <img className={styles["grid-element"]} src="/" alt="4"/> 
+          <img className={styles["grid-element"]} src="/" alt="5"/> 
+          <img className={styles["grid-element"]} src="/" alt="6"/> 
+        </div>
+      </div>
+    </div>
+    </div>
     </>
     );
 }

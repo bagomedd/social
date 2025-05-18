@@ -1,7 +1,5 @@
 import { AUTH_URL, DEFAULT_IP} from "@/utils/const";
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-import { APP_CLIENT_INTERNALS } from "next/dist/shared/lib/constants";
-import { cookies } from "next/headers";
+
 import { NextRequest, NextResponse} from "next/server";
 
 export interface IRegisterApi{
@@ -9,29 +7,9 @@ export interface IRegisterApi{
     "username" : string,
     "password" : string,
 }
-// export function newRegisterApiObject() : IRegisterApi{
-//     return{
-//         "email" : '',
-//         "username": '',
-//         "password" : '',
-//     }
-// }
-
-
 
 export async function POST(req: NextRequest){
-    // cookies()
-    // .then((cookieStore)=>{
-    //     return cookieStore.set("token", jwtToken);
-    // })
-    // .then((e)=>{
-    //     return cookies()
-    // })
-    // .then((cookieStore)=>{
-    //     console.log(cookieStore.get("token"));
-    // })
-
-    
+    let responseStatus : number = 0;
 
     let formData : FormData = await req.formData()
 
@@ -47,11 +25,16 @@ export async function POST(req: NextRequest){
         method : "POST",
     })
     .then((response)=>{
-        
+        if (response.ok){
+            responseStatus = response.status;
+        }
     })
     
+    if (Math.floor(responseStatus/100) == 2){
+        return NextResponse.redirect(new URL(DEFAULT_IP));
+    }
     
-    return NextResponse.redirect(new URL(DEFAULT_IP + '/login', req.url));
+    return NextResponse.redirect(new URL(DEFAULT_IP + "/register?error=Ошибка при регистрации"));
     // return NextResponse.redirect('/');
     
 } 
