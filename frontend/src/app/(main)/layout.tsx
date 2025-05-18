@@ -1,14 +1,21 @@
-import {TopUI} from "@/Components/TopUI";
-import "./globals.css"
-
+import {TopUI, SideUI} from "@/Components/UI"; 
+import "@/styles/globals.css"
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  return (
-    <html lang="en">
-      <body>
-       <TopUI/>
-        {children}
-      </body>
-    </html>
-  );
+return (
+<>
+  <div className="page">
+    <TopUI />
+    <div className="header-after">
+    <SideUI/>
+    <div className="side-after">
+      <div className="feed">
+      {children}
+      
+      </div>
+    </div>
+    </div>
+  </div>
+</>
+);
 }
 

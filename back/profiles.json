@@ -1,0 +1,20 @@
+{
+    "text" : "Privet eto moi perviy post",
+    "media": [
+        "http://localhost:1488/media/media_0",
+        "http://localhost:1488/media/media_1",
+        "http://localhost:1488/media/media_2",
+        "http://localhost:1488/media/media_3",
+        "http://localhost:1488/media/media_4",
+        "http://localhost:1488/media/media_5",
+        "http://localhost:1488/media/media_6",
+        "http://localhost:1488/media/media_7",
+        "http://localhost:1488/media/media_8",
+        "http://localhost:1488/media/media_9"
+    ],
+    "music" : [
+        "http://localhost:1488/music/music_0",
+        "http://localhost:1488/music/music_1",
+        "http://localhost:1488/music/music_2"
+    ]
+    }

@@ -1,7 +1,9 @@
 'use client'
 //import React, { ChangeEvent } from 'react'
 import { useState, useRef } from "react"
-import styles from "@/styles/registerPage.module.css"
+import styles from "@/styles/auth.module.css"
+import Link from "next/link"
+
 export default function loginPage() {
 
   interface ILoginValues {
@@ -15,7 +17,7 @@ export default function loginPage() {
   }}
   const loginValuesRef = useRef<ILoginValues>(newLoginValues());
   const [inputErrors,setInputErrors] = useState<ILoginValues>(newLoginValues());
-
+  const formElementRef = useRef<HTMLFormElement | null>(null)
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>){
     if (e){
@@ -41,34 +43,43 @@ export default function loginPage() {
       tempLoginValues.password.length > 32 ? tempErrors.password = "password must be maximum 32 symbols" : tempErrors.password ='';
 
       setInputErrors(tempErrors);
+      if (JSON.stringify(tempErrors) == JSON.stringify(newLoginValues())){
+        formElementRef.current!.submit();
+      }
     }
   }
 
 return (
-<div>
-  <form className={styles['login-form']}>
-    {inputErrors.email}
+<div className={styles["page"]}>
+  <form action="/api/login" method="POST" className={styles['auth-form']} ref = {formElementRef}>
+  <p className={styles['error']}>{inputErrors.email}</p>
     <input
+      className={styles["input"]}
       placeholder = "email"
+      name ="email"
       data-type = "email"
       onChange = {(e) =>{handleInputChange(e)}}
-    />
+      />
 
-    {inputErrors.password}
+<p className={styles['error']}>{inputErrors.email}</p>
   <input
+      className={styles["input"]}
       placeholder = "password"
+      name = "password"
       data-type = "password"
       onChange = {(e) =>{handleInputChange(e)}}
-    />
+      />
         
   </form>
   <button 
+    className={styles["submit-button"]}
     onClick={(e)=>{handleSubmitButton(e)}}
   >
     Submit form
 
   </button>
 
+  <Link href="/register" className={styles["submit-button"]}> Register  </Link>
 </div>
 )
 }

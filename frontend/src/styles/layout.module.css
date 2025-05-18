@@ -1,15 +1,20 @@
 .header{
     position:fixed;
-    background-color: var(--color-white-900);
+    z-index: 10;
+    /* COLOR */
+    background-color: white;
     width:100%;
     height:60px;
-    font-family:'primary';
+    font-family: var(--font-family-first);
+
     font-size:15pt;
     font-weight:600;
 }
 .header-ul{
-    padding-left: clamp(0px, (100vw - 600px) * 0.5, 100px);
-    padding-right: clamp(0px, (100vw - 600px) * 0.5, 100px);
+    /* padding-left: clamp(0px, (100vw - 600px) * 0.5, 50px);
+    padding-right: clamp(0px, (100vw - 600px) * 0.5, 50px); */
+
+    padding: 0 5% 0 5%;
 
     display:flex;
     height:100%;
@@ -17,8 +22,9 @@
 }
 
 .header-element{
+    display: block;
+    width:115px;
     
-    width:100px;
     height: 100%;
     align-content: center;
 }
@@ -26,14 +32,44 @@
 
 .header-element:last-child{
     margin-left: auto;  
+    width:200px;
 }
 
-.hero-layout{
-    padding-left: clamp(0px, (100vw - 600px) * 0.5, 50px);
-    padding-right: clamp(0px, (100vw - 600px) * 0.5, 50px);
+/* .hero-layout{
+    padding-left: 10%;
+    padding-right: 10%;
+} */
+.side-ui{
+    padding : 0 calc(95% - 0.95 * 180px) 0 calc(5% - 0.05 * 180px);
+    position: absolute;
+    display: inline;
+    font-family:var(--font-family-first);
+    font-weight: 500;
+
+    width:max-content;
+}
+.side-ul{
+
+    margin-top:40px;
+    background-color: white;
+    width:180px;
+    padding: 20px 40px 20px 40px; 
+    border-radius: 25px;
 }
 
-.page{
-    min-height:100vh;
-    background-color: var(--color-gray-200);
+
+.account-image{
+
+}
+.header-text{
+    display:inline-block;    
+}
+.profile-name{
+    display:inline;
+    padding: 0 10px 0 10px;
+}
+.profile-image{
+    display:inline;
+    border-radius: 50%;
+    width:50px;
 }

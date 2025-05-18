@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@font-face{
+    font-family: 'primary';
+    src: "@/fonts/SpecialGothicExpandedOne-Regular.ttf";
+}
+
+    @font-face{
+    font-family:'second';
+    src: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
+body{
+    width:100%;
+    height:100vh;
+    margin:0;
+}
+ul{
+    margin-block-end: 0;
+    margin-block-start: 0;
+    list-style:none;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
+
+:root{
+    --font-family-first : 'Franklin Gothic ', 'Arial Narrow', Arial, sans-serif;
+}
+
+.page{
+
+    min-height:100vh;
+    background-color: var(--color-gray-100);
+    
+}
+.header-after{
+    display: flex;
+    justify-content: center;
+    /* padding-left: clamp(0px, (100vw - 600px) * 0.5, 50px);
+    padding-right: clamp(0px, (100vw - 600px) * 0.5, 50px); */
+    /* padding: 60px 5% 0 5%; */
+    padding-top:60px;
+    /* padding-top:60px; */
+}
+.side-after{
+    display:flex;
+    justify-content: center;
+    min-width :960px;
+    max-width:960px;
+    /* padding: 0 20% 0 20%; */
+}
+.feed{
+    /* min-width:960px; */
+    min-width:90%;
+    max-width: 90%s;
+    
+    background-color: white;
+    /* padding: 5% 5% 0 5%; */
+    min-height:calc(100vh - 60px);
+
+}
+
+/* 
+@media (max-width:1200px){
+    .side-after{
+        padding: 0 10% 0 10%;
+    }
+} */
