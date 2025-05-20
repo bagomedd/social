@@ -1,3 +1,11 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"prettier.enable": true,
+	// Если используете ESLint вместе с Prettier:
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.format.enable": false // Важно! Отключает форматирование через ESLint
 }
