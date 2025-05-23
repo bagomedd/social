@@ -1,7 +1,6 @@
 // const PROFILES_URL = "http://localhost:1488/api/"
 import { ChangeEvent } from "react";
 import { PROFILES_URL } from "./const";
-import { useProfileStore } from "@/store/-";
 
 export const profileFields = {
 	// initId : "initId",

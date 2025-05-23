@@ -3,7 +3,6 @@ import { AUTH_URL, DEFAULT_IP } from "@/utils/const";
 
 import { IAccessToken, setToken } from "@/utils/cookies";
 import { getProfile, profileFields } from "@/utils/profile";
-import { ProfileInit } from "@/store/-";
 import { ILoginPost } from "@/utils/auth";
 
 export async function POST(req: NextRequest) {
