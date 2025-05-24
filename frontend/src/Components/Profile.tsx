@@ -15,16 +15,19 @@ export function Profile({
 	profileInfo,
 	profileName,
 	accessToken,
-	followers,
-	followed,
+	_followers,
+	_followed,
 }: {
-	followers: Array<IProfileShort> | null;
-	followed: Array<IProfileShort> | null;
+	_followers: Array<IProfileShort> | null;
+	_followed: Array<IProfileShort> | null;
 	profileInfo: IProfile;
 	profileName: string;
 	accessToken: string | undefined;
 }) {
+	const [followers, setFollowers] = useState<Array<IProfileShort> | null>(_followers);
+	const [followed, setFollowed] = useState<Array<IProfileShort> | null>(_followed);
 	const [followsState, setFollowsState] = useState<Array<IProfileShort> | null>(null);
+	const [followersCount, setFollowersCount] = useState<number>(profileInfo[prF.followersCount]);
 	const followsMenuRef = useRef<HTMLDivElement | null>(null);
 	const pageFilterRef = useRef<HTMLDivElement | null>(null);
 	const [profileState, setProfileState] = useState<IProfile>(profileInfo);
@@ -35,6 +38,9 @@ export function Profile({
 			if (isOk) {
 				getProfile(profileName, accessToken).then((_profileInfo) => {
 					setProfileState(_profileInfo);
+				});
+				getFollows(profileName, accessToken, "followers").then((__followers) => {
+					setFollowers(__followers);
 				});
 			} else {
 				console.log("PROFILE INFO HAS NOT UPDATED, STATUS IS : ", isOk);
@@ -47,11 +53,17 @@ export function Profile({
 				getProfile(profileName, accessToken).then((_profileInfo) => {
 					setProfileState(_profileInfo);
 				});
+				getFollows(profileName, accessToken, "followers").then((__followers) => {
+					setFollowers(__followers);
+				});
 			} else {
 				console.log("PROFILE INFO HAS NOT UPDATED, STATUS IS : ", isOk);
 			}
 		});
 	}
+	useEffect(() => {
+		setFollowersCount(profileState[prF.followersCount]);
+	}, [profileState]);
 	function editInfo() {
 		redirect("/editInfo");
 	}
@@ -173,7 +185,8 @@ export function Profile({
 								openFollows(e);
 							}}>
 							{" "}
-							Подписчики: {profileInfo[prF.followersCount]}{" "}
+							Подписчики: {followersCount}
+							{/* Подписчики: {profileInfo[prF.followersCount]} */}
 						</div>
 						<div className={styles["followers-bar"]}>
 							{followers ? (

@@ -19,8 +19,8 @@ export default async function Page({ params }: { params: Promise<{ profile: stri
 					profileInfo={profileInfo}
 					profileName={profile}
 					accessToken={accessToken}
-					followers={followers}
-					followed={followed}
+					_followers={followers}
+					_followed={followed}
 				/>
 			) : (
 				"Profile isn't loaded"

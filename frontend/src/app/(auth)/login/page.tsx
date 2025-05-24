@@ -22,6 +22,7 @@ export default function loginPage() {
 	const loginValuesRef = useRef<ILoginValues>(newLoginValues());
 	const [inputErrors, setInputErrors] = useState<ILoginValues>(newLoginValues());
 	const formElementRef = useRef<HTMLFormElement | null>(null);
+	const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState<boolean>(false);
 
 	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
 		if (e) {
@@ -37,6 +38,7 @@ export default function loginPage() {
 	}
 	function handleSubmitButton(e: React.MouseEvent<HTMLButtonElement>) {
 		if (e) {
+			setIsSubmitButtonDisabled(true);
 			let tempLoginValues = loginValuesRef.current;
 			let tempErrors = newLoginValues();
 
@@ -54,6 +56,7 @@ export default function loginPage() {
 			if (JSON.stringify(tempErrors) == JSON.stringify(newLoginValues())) {
 				formElementRef.current!.submit();
 			}
+			setIsSubmitButtonDisabled(false);
 		}
 	}
 
@@ -85,6 +88,7 @@ export default function loginPage() {
 			</form>
 			<button
 				className={styles["submit-button"]}
+				disabled={isSubmitButtonDisabled}
 				onClick={(e) => {
 					handleSubmitButton(e);
 				}}>
