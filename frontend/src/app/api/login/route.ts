@@ -11,5 +11,6 @@ export async function POST(req: NextRequest) {
 	});
 	var json = JSON.stringify(object);
 
-	return await loginFetch(json, req);
+	let response = await loginFetch(json, req);
+	return response;
 }

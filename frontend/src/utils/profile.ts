@@ -39,7 +39,7 @@ export interface IProfileShort {
 	[profileShortFields.avatarURL]: string;
 }
 
-function authorizationHeaders(accessToken: string): Headers {
+export function authorizationHeaders(accessToken: string): Headers {
 	return new Headers({
 		Authorization: `Bearer ${accessToken}`,
 	});

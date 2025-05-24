@@ -34,7 +34,7 @@ export async function registerFetch(json: string, req: NextRequest) {
 
 		console.log(responseStatus);
 		if (Math.floor(responseStatus / 100) == 2) {
-			return NextResponse.redirect("/login");
+			return NextResponse.redirect(new URL("/login", req.url));
 		}
 
 		return NextResponse.redirect(new URL("/register?error=Ошибка при регистрации", req.url));
