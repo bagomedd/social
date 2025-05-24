@@ -1,15 +1,12 @@
 "use client";
 import styles from "@/styles/layout.module.css";
-import Link from "next/link";
 import { IProfileShort, IProfile, getProfilesByName } from "@/utils/profile";
 import { profileShortFields as prsF } from "@/utils/profile";
-import { profileFields as prF } from "@/utils/profile";
 import { logout } from "@/utils/auth";
 import { useRef, useState, useEffect } from "react";
 import { getTokenClient } from "@/utils/CookiesClient";
 import { JSX } from "react";
 import { redirect } from "next/navigation";
-import { DEFAULT_IP } from "@/utils/const";
 const VISIBLE_ACCOUNTS_COUNT = 4;
 
 function SearchMenuContent({ searchedProfiles }: { searchedProfiles: Array<IProfileShort> }) {

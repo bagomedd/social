@@ -11,103 +11,6 @@ import { profileShortFields as prsF } from "@/utils/profile";
 
 import Link from "next/link";
 
-// const followers: Array<IProfileShort> = [
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "Abdullah mohhammad arabis mustapha",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "sec sub",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "third sub",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "fouth sub",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf sub",
-// 	},
-// ];
-// const followed: Array<IProfileShort> = [
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "Abdullah mohhammad arabis mustapha",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "sec fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "third fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "fouth fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// 	{
-// 		avatarurl: "/default.jpg",
-// 		username: "funf fol",
-// 	},
-// ];
-
 export function Profile({
 	profileInfo,
 	profileName,
@@ -257,7 +160,7 @@ export function Profile({
 								<img className={styles["grid-element"]} src="/" alt="3" />
 								<img className={styles["grid-element"]} src="/" alt="4" />
 								<img className={styles["grid-element"]} src="/" alt="5" />
-								<img className={styles["grid-element"]} src="/" alt="6" />
+								<img className={styles["grid-eleme	nt"]} src="/" alt="6" />
 							</div>
 						</div>
 					</div>

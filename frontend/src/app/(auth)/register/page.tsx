@@ -1,10 +1,6 @@
-// 'use server'
 "use client";
-//import React, { ChangeEvent } from 'react'
 import { useState, useRef } from "react";
-import { useSearchParams, useServerInsertedHTML } from "next/navigation";
 import styles from "@/styles/auth.module.css";
-// import {login} from "@/utils/auth"
 import { IRegisterValues, newRegisterValues } from "@/utils/register";
 import Link from "next/link";
 
