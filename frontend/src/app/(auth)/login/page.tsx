@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function loginPage() {
-	const loginError = "login";
+	const loginError = "";
 
 	interface ILoginValues {
 		email: string;

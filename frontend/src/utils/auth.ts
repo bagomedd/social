@@ -1,6 +1,6 @@
 import { deleteTokenClient } from "./CookiesClient";
 import { redirect } from "next/navigation";
-import { AUTH_URL } from "./const";
+import { AUTH_URL, DEFAULT_URL } from "./const";
 import { NextRequest, NextResponse } from "next/server";
 import { IAccessToken, setToken } from "./cookies";
 import { getProfile, profileFields } from "./profile";
@@ -21,7 +21,6 @@ export async function logout() {
 
 export async function registerFetch(json: string, req: NextRequest) {
 	let responseStatus: number = 0;
-
 	try {
 		fetch(AUTH_URL + "/register", {
 			body: json,
@@ -37,9 +36,9 @@ export async function registerFetch(json: string, req: NextRequest) {
 			return NextResponse.redirect(new URL("/login", req.url));
 		}
 
-		return NextResponse.redirect(new URL("/register?error=Ошибка при регистрации", req.url));
+		return NextResponse.redirect(new URL(DEFAULT_URL + "/register?error=Ошибка при регистрации"));
 	} catch {
-		return NextResponse.redirect(new URL("/login", req.url));
+		return NextResponse.redirect(new URL(DEFAULT_URL + "/login"));
 	}
 }
 export async function loginFetch(json: string, req: NextRequest) {
@@ -75,11 +74,11 @@ export async function loginFetch(json: string, req: NextRequest) {
 				throw "error with convert accessToken";
 			}
 
-			return NextResponse.redirect(new URL("/" + profileName, req.url));
+			return NextResponse.redirect(new URL(DEFAULT_URL + "/" + profileName));
 		} else {
-			return NextResponse.redirect(new URL("/login?error=Ошибка при логине", req.url));
+			return NextResponse.redirect(new URL(DEFAULT_URL + "/login?error=Ошибка при логине"));
 		}
 	} catch {
-		return NextResponse.redirect(new URL("/" + profileName, req.url));
+		return NextResponse.redirect(new URL(DEFAULT_URL + "/" + profileName));
 	}
 }

@@ -5,7 +5,7 @@ import { IRegisterValues, newRegisterValues } from "@/utils/register";
 import Link from "next/link";
 
 export default function registerPage() {
-	const registrationError = "error";
+	const registrationError = "";
 	const registerValuesRef = useRef<IRegisterValues>(newRegisterValues());
 	const [inputErrors, setInputErrors] = useState<IRegisterValues>(newRegisterValues());
 	const formElementRef = useRef<HTMLFormElement | null>(null);

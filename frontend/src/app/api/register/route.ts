@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
 		object[key] = value;
 	});
 	var json = JSON.stringify(object);
-	return await registerFetch(json, req);
+	let response = await registerFetch(json, req);
+	return response;
 	// return NextResponse.redirect('/');
 }

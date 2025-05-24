@@ -1,12 +1,13 @@
 "use client";
 import styles from "@/styles/layout.module.css";
-import { IProfileShort, IProfile, getProfilesByName } from "@/utils/profile";
+import { IProfileShort, getProfilesByName, getProfile, profileFields, IProfile } from "@/utils/profile";
 import { profileShortFields as prsF } from "@/utils/profile";
 import { logout } from "@/utils/auth";
 import { useRef, useState, useEffect } from "react";
 import { getTokenClient } from "@/utils/CookiesClient";
 import { JSX } from "react";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 const VISIBLE_ACCOUNTS_COUNT = 4;
 
 function SearchMenuContent({ searchedProfiles }: { searchedProfiles: Array<IProfileShort> }) {
@@ -99,10 +100,20 @@ export function TopUI() {
 }
 
 export function SideUI() {
+	const [profile, setProfile] = useState<IProfile | null>(null);
+	console.log("123");
+	let accessToken = getTokenClient("access");
+	useEffect(() => {
+		getProfile("me", accessToken).then((_profile) => {
+			setProfile(_profile);
+		});
+	}, []);
 	return (
 		<aside className={styles["side-ui"]}>
 			<ul className={styles["side-ul"]}>
-				<li className={styles["side-element"]}>Profile</li>
+				<Link href={profile ? profile[profileFields.username] : "/"}>
+					<li className={styles["side-element"]}>Profile</li>
+				</Link>
 				<li className={styles["side-element"]}>Messages</li>
 				<li className={styles["side-element"]}>Friends</li>
 				<li className={styles["side-element"]}>Communities</li>

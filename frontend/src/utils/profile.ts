@@ -49,7 +49,7 @@ export function getProfile(shortUrl: string, accessToken: string | undefined): P
 	if (!accessToken) {
 		accessToken = "";
 	}
-	return fetch(PROFILES_URL + "/profiles/" + shortUrl, {
+	return fetch(PROFILES_URL + "/" + shortUrl, {
 		method: "GET",
 		headers: authorizationHeaders(accessToken),
 	})
@@ -114,12 +114,9 @@ export function getFollows(
 }
 export async function getProfilesByName(e: ChangeEvent, accessToken: string): Promise<Array<IProfileShort> | null> {
 	let inputValue = (e.target as HTMLInputElement).value;
-	return fetch(PROFILES_URL + "/profiles?search=" + inputValue, {
-		// return fetch("www.wikipedia.org/", {
+
+	return fetch(PROFILES_URL + "?search=" + inputValue, {
 		method: "GET",
-		// body: {
-		// 	search_params: inputValue,
-		// },
 		headers: authorizationHeaders(accessToken),
 	})
 		.then((response: Response) => {
